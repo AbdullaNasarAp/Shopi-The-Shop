@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:shopi/view/splash1/widget/texttile.dart';
+import 'package:shopi/view/splash/widget/texttile.dart';
 
 class ButtonContainer extends StatelessWidget {
   const ButtonContainer({
@@ -12,6 +12,7 @@ class ButtonContainer extends StatelessWidget {
     required this.ls,
     required this.fontwght,
     required this.fontsz,
+    required this.textalign,
   });
   final double kWidth;
   final double kHeight;
@@ -21,6 +22,7 @@ class ButtonContainer extends StatelessWidget {
   final double ls;
   final FontWeight fontwght;
   final double fontsz;
+  final TextAlign textalign;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class ButtonContainer extends StatelessWidget {
       ),
       child: Center(
         child: TextTitle(
+          textalign: textalign,
           title: title,
           ls: ls,
           colors: colors,

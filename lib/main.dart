@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopi/controller/provider/splashnav.dart';
-import 'package:shopi/view/splash1/splash.dart';
+import 'package:shopi/view/splash/splash.dart';
 
 void main() {
   runApp(
@@ -22,6 +22,7 @@ class Shopi extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData.light().copyWith(
           textTheme: const TextTheme(
             headline1: TextStyle(
