@@ -13,6 +13,7 @@ class ButtonContainer extends StatelessWidget {
     required this.fontwght,
     required this.fontsz,
     required this.textalign,
+    required this.bRadius,
   });
   final double kWidth;
   final double kHeight;
@@ -23,6 +24,7 @@ class ButtonContainer extends StatelessWidget {
   final FontWeight fontwght;
   final double fontsz;
   final TextAlign textalign;
+  final double bRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class ButtonContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: kColors,
         borderRadius: BorderRadius.circular(
-          10,
+          bRadius,
         ),
       ),
       child: Center(

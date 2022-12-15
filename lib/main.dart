@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopi/controller/provider/auth/signin.dart';
 import 'package:shopi/controller/provider/splashnav.dart';
 import 'package:shopi/view/splash/splash.dart';
 
@@ -19,6 +20,9 @@ class Shopi extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => SplashPro(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SignInProvider(),
         )
       ],
       child: MaterialApp(
