@@ -5,6 +5,7 @@ import 'package:shopi/utils/utils.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:shopi/view/login/widget/button_container.dart';
 import 'package:shopi/view/login/widget/button_image.dart';
+import 'package:shopi/view/login/widget/form.dart';
 import 'package:shopi/view/splash/widget/texttile.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -17,10 +18,6 @@ class SignInScreen extends StatelessWidget {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         backgroundColor: kWhite,
-        appBar: AppBar(
-          backgroundColor: AppColors.transparentColor,
-          elevation: 0,
-        ),
         body: Center(
           child: SingleChildScrollView(
             reverse: true,
@@ -32,16 +29,29 @@ class SignInScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const TextTitle(
-                      title: "Login",
-                      ls: 0,
-                      colors: kBlack,
-                      fontwght: FontWeight.bold,
-                      fontsz: 35,
-                      textalign: TextAlign.center,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Hero(
+                          tag: "logo",
+                          child: Image.asset(
+                            "assets/images/Fast Cart.png",
+                            width: 100,
+                            height: 100,
+                          ),
+                        ),
+                        const TextTitle(
+                          title: "Login",
+                          ls: 0,
+                          colors: kBlack,
+                          fontwght: FontWeight.bold,
+                          fontsz: 35,
+                          textalign: TextAlign.center,
+                        ),
+                      ],
                     ),
                     ksizedBox50,
-                    CustomTextFormfield(
+                    FormTextFormfield(
                       controller: signInProvider.emailController,
                       keyboardType: TextInputType.emailAddress,
                       action: TextInputAction.next,
@@ -53,7 +63,7 @@ class SignInScreen extends StatelessWidget {
                     ),
                     ksizedBox10,
                     Consumer<SignInProvider>(builder: (context, values, _) {
-                      return CustomTextFormfield(
+                      return FormTextFormfield(
                         controller: signInProvider.passwordController,
                         keyboardType: TextInputType.text,
                         action: TextInputAction.next,
@@ -70,7 +80,7 @@ class SignInScreen extends StatelessWidget {
                     }),
                     ksizedBox20,
                     Consumer<SignInProvider>(builder: (context, values, _) {
-                      return values.loading == true
+                      return values.isloading == true
                           ? LoadingAnimationWidget.flickr(
                               leftDotColor: kBlack,
                               rightDotColor: Colors.grey,
@@ -165,13 +175,16 @@ class SignInScreen extends StatelessWidget {
                         TextButton(
                           onPressed: () =>
                               signInProvider.toSignUpScreen(context),
-                          child: const TextTitle(
-                            title: "Sign Up",
-                            ls: 0,
-                            colors: kBlack,
-                            fontwght: FontWeight.bold,
-                            fontsz: 18,
-                            textalign: TextAlign.center,
+                          child: const Hero(
+                            tag: "sign",
+                            child: TextTitle(
+                              title: "Sign Up",
+                              ls: 0,
+                              colors: Colors.blue,
+                              fontwght: FontWeight.bold,
+                              fontsz: 15,
+                              textalign: TextAlign.center,
+                            ),
                           ),
                         )
                       ],
@@ -205,64 +218,6 @@ class AppTextStyles {
       fontSize: 12, color: AppColors.blackcolor, fontWeight: FontWeight.bold);
   static const customButtonTextStyle = TextStyle(
       color: AppColors.blackcolor, fontSize: 16, fontWeight: FontWeight.bold);
-}
-
-class CustomTextFormfield extends StatelessWidget {
-  const CustomTextFormfield({
-    super.key,
-    required this.controller,
-    required this.keyboardType,
-    required this.action,
-    required this.icon,
-    required this.hint,
-    required this.obscure,
-    required this.validator,
-    this.suffixOntap,
-    this.suffixIcon,
-  });
-  final TextEditingController controller;
-  final TextInputType keyboardType;
-  final TextInputAction action;
-  final IconData icon;
-  final String hint;
-  final bool obscure;
-  final String? Function(String?)? validator;
-  final void Function()? suffixOntap;
-  final IconData? suffixIcon;
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      autofocus: false,
-      keyboardType: keyboardType,
-      textInputAction: action,
-      controller: controller,
-      validator: validator,
-      decoration: InputDecoration(
-        fillColor: kWhite,
-        filled: true,
-        prefixIcon: Icon(
-          icon,
-          color: kBlack,
-        ),
-        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 20),
-        hintText: hint,
-        hintStyle: const TextStyle(color: kBlack),
-        suffixIcon: obscure == true
-            ? IconButton(
-                onPressed: suffixOntap,
-                icon: Icon(
-                  suffixIcon,
-                  color: kBlack,
-                ),
-              )
-            : null,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-      ),
-      obscureText: obscure,
-    );
-  }
 }
 
 class CustomButtonThree extends StatelessWidget {

@@ -6,13 +6,13 @@ import 'package:shopi/view/forgot/forgot.dart';
 import 'package:shopi/view/home/home.dart';
 import 'package:shopi/view/signup/signup.dart';
 
-import '../../../model/login_model.dart';
+import '../../../model/sign_in/login_model.dart';
 
 class SignInProvider with ChangeNotifier {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isNotVisible = true;
-  bool loading = false;
+  bool isloading = false;
   final GoogleSignIn googleSignIn = GoogleSignIn();
   FlutterSecureStorage storage = const FlutterSecureStorage();
 
@@ -52,7 +52,7 @@ class SignInProvider with ChangeNotifier {
   void toSignUpScreen(context) {
     clearControllers();
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => const SignUpScreen(),
+      builder: (context) => SignUpScreen(),
     ));
   }
 
@@ -62,9 +62,37 @@ class SignInProvider with ChangeNotifier {
         .push(MaterialPageRoute(builder: (context) => const ForgotPage()));
   }
 
+  // void login(context, FormState currentState) async {
+  //   if (currentState.validate()) {
+  //     isloading = true;
+  //     notifyListeners();
+  //     final LoginModel model = LoginModel(
+  //       email: emailController.text,
+  //       password: passwordController.text,
+  //     );
+  //     await ApiSignIn().login(model).then((value) async {
+  //       if (value != null) {
+  //         await storage.write(key: 'token', value: value.accessToken);
+  //         await storage.write(key: 'refreshToken', value: value.refreshToken);
+  //         Navigator.of(context).pushAndRemoveUntil(
+  //             MaterialPageRoute(
+  //               builder: (context) => const HomeScreen(),
+  //             ),
+  //             (route) => false);
+  //         clearControllers();
+  //         isloading = false;
+  //         notifyListeners();
+  //       } else {
+  //         isloading = false;
+  //         notifyListeners();
+  //       }
+  //     });
+  //   }
+  // }
+
   void login(context, FormState currentState) async {
     if (currentState.validate()) {
-      loading = true;
+      isloading = true;
       notifyListeners();
       final LoginModel model = LoginModel(
         email: emailController.text,
@@ -80,10 +108,10 @@ class SignInProvider with ChangeNotifier {
               ),
               (route) => false);
           clearControllers();
-          loading = false;
+          isloading = false;
           notifyListeners();
         } else {
-          loading = false;
+          isloading = false;
           notifyListeners();
         }
       });
@@ -91,7 +119,7 @@ class SignInProvider with ChangeNotifier {
   }
 
   void googleSignin(context) async {
-    loading = true;
+    isloading = true;
     notifyListeners();
     await ApiSignIn().googleSignIn(googleSignIn).then(
       (value) {
@@ -101,11 +129,12 @@ class SignInProvider with ChangeNotifier {
                 builder: (context) => const HomeScreen(),
               ),
               (route) => false);
+          notifyListeners();
           clearControllers();
-          loading = false;
+          isloading = false;
           notifyListeners();
         } else {
-          loading = false;
+          isloading = false;
           notifyListeners();
         }
       },

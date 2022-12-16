@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:shopi/utils/utils.dart';
 import 'package:shopi/view/splash/widget/texttile.dart';

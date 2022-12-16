@@ -1,8 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:provider/provider.dart';
+import 'package:shopi/controller/provider/auth/otp.dart';
 import 'package:shopi/controller/provider/auth/signin.dart';
+import 'package:shopi/controller/provider/auth/signup.dart';
+import 'package:shopi/controller/provider/new_password.dart';
 import 'package:shopi/controller/provider/splashnav.dart';
+import 'package:shopi/view/otp/otp.dart';
 import 'package:shopi/view/splash/splash.dart';
 
 void main() {
@@ -18,12 +22,11 @@ class Shopi extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => SplashPro(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => SignInProvider(),
-        )
+        ChangeNotifierProvider(create: (context) => SplashPro()),
+        ChangeNotifierProvider(create: (context) => SignupProvider()),
+        ChangeNotifierProvider(create: (context) => SignInProvider()),
+        ChangeNotifierProvider(create: (context) => OtpScreenProvider()),
+        ChangeNotifierProvider(create: (context) => NewPasswordProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

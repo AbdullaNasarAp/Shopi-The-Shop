@@ -4,8 +4,8 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shopi/constant/apiconst.dart';
-import 'package:shopi/model/login_model.dart';
-import 'package:shopi/model/signin_model.dart';
+import 'package:shopi/model/sign_in/login_model.dart';
+import 'package:shopi/model/sign_in/signin_token_model.dart';
 import 'package:shopi/utils/app_exception.dart';
 
 class ApiSignIn {
@@ -27,6 +27,7 @@ class ApiSignIn {
     } catch (e) {
       AppExceptions.errorHandler(e);
     }
+    return null;
   }
 
   Future<String?> googleSignIn(GoogleSignIn googleSignIn) async {
