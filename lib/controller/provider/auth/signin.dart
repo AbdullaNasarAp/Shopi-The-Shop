@@ -62,34 +62,6 @@ class SignInProvider with ChangeNotifier {
         .push(MaterialPageRoute(builder: (context) => const ForgotPage()));
   }
 
-  // void login(context, FormState currentState) async {
-  //   if (currentState.validate()) {
-  //     isloading = true;
-  //     notifyListeners();
-  //     final LoginModel model = LoginModel(
-  //       email: emailController.text,
-  //       password: passwordController.text,
-  //     );
-  //     await ApiSignIn().login(model).then((value) async {
-  //       if (value != null) {
-  //         await storage.write(key: 'token', value: value.accessToken);
-  //         await storage.write(key: 'refreshToken', value: value.refreshToken);
-  //         Navigator.of(context).pushAndRemoveUntil(
-  //             MaterialPageRoute(
-  //               builder: (context) => const HomeScreen(),
-  //             ),
-  //             (route) => false);
-  //         clearControllers();
-  //         isloading = false;
-  //         notifyListeners();
-  //       } else {
-  //         isloading = false;
-  //         notifyListeners();
-  //       }
-  //     });
-  //   }
-  // }
-
   void login(context, FormState currentState) async {
     if (currentState.validate()) {
       isloading = true;

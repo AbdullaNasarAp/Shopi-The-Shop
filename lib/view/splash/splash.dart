@@ -10,12 +10,8 @@ class SplashScreen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        Provider.of<SplashPro>(context, listen: false)
-            .navigatorSplash1(context);
-      },
-    );
+    final splashController = Provider.of<SplashPro>(context, listen: false);
+    splashController.checkLogin(context);
     return Scaffold(
       body: SafeArea(
         child: Column(

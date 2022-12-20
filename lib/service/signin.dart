@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shopi/constant/apiconst.dart';
 import 'package:shopi/model/sign_in/login_model.dart';
@@ -13,14 +14,13 @@ class ApiSignIn {
   Future<SignInModel?> login(LoginModel model) async {
     try {
       Response response = await dio.post(
-        ApiConstant.mainUrl + ApiEndPoints.login,
+        ApiUrl.apiUrl + ApiEndPoints.login,
         queryParameters: ApiQueryParameter.queryParameter,
-        data: jsonEncode(
-          model.toJson(),
-        ),
+        data: jsonEncode(model.toJson()),
       );
+
       if (response.statusCode == 200) {
-        log(response.data);
+        log(response.data.toString());
         final SignInModel model = SignInModel.fromJson(response.data);
         return model;
       }

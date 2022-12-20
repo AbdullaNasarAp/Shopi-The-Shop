@@ -103,20 +103,23 @@ class SignInScreen extends StatelessWidget {
                               ),
                             );
                     }),
-                    ksizedBox20,
-                    Center(
-                      child: TextButton(
-                        onPressed: () =>
-                            signInProvider.toForgotPasswordScreen(context),
-                        child: const TextTitle(
-                          title: "Forgot Password ?",
-                          ls: 0,
-                          colors: kBlack,
-                          fontwght: FontWeight.w300,
-                          fontsz: 15,
-                          textalign: TextAlign.center,
+                    ksizedBox10,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                          onPressed: () =>
+                              signInProvider.toForgotPasswordScreen(context),
+                          child: const TextTitle(
+                            title: "Forgot Password ?",
+                            ls: 0,
+                            colors: kBlue,
+                            fontwght: FontWeight.w300,
+                            fontsz: 15,
+                            textalign: TextAlign.center,
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                     ksizedBox50,
                     Row(

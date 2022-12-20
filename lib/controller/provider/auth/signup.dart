@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopi/model/otp.dart';
 import 'package:shopi/model/sign_up/signup_model.dart';
@@ -78,13 +76,12 @@ class SignupProvider with ChangeNotifier {
 
   void toSignUpOtpScreen(context, FormState currentState) async {
     final SignUpModel model = SignUpModel(
-      fullname: nameController.text,
+      username: nameController.text,
       email: emailController.text,
-      number: phoneNumberController.text,
+      phone: phoneNumberController.text,
       password: passwordController.text,
     );
-    final args = OtpArguementModel(
-        model: model, checkScreen: OtpScreenEnum.signUpOtpScreen);
+
     if (currentState.validate()) {
       isLoading = true;
       notifyListeners();

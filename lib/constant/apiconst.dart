@@ -1,5 +1,5 @@
 class ApiConstant {
-  static const mainUrl = "http://172.16.3.122:3000/api/v1/";
+  static const mainUrl = "http://172.16.1.104:5005/api/v1/";
 }
 
 class ApiEndPoints {
@@ -26,6 +26,6 @@ class ApiQueryParameter {
 }
 
 class ApiUrl {
-  static const apiUrl = 'http://172.16.3.122:3000/api/v1/';
-  static const url = '172.16.3.122';
+  static const apiUrl = 'http://172.16.1.104:5005/api/v1/';
+  static const url = '172.16.1.104';
 }

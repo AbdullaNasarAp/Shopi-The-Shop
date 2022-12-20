@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:shopi/controller/provider/new_password.dart';
 import 'package:shopi/utils/utils.dart';
@@ -26,17 +27,19 @@ class SuccessDialouge extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              // Image(
-              //   image: AssetImage(
-              //       'assets/create_new_password_screen_assets/password_reset_success.png'),
-              // ),
-              Text('Success!', style: AppTextStyles.textStyle2),
+            children: [
+              const Text('Success!', style: AppTextStyles.textStyle2),
               ksizedBox10,
-              Text('You will be redirected to the\nHome page in a\nfew seconds',
-                  textAlign: TextAlign.center, style: AppTextStyles.textStyle3),
+              const Text(
+                  'You will be redirected to the\nHome page in a\nfew seconds',
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.textStyle3),
               ksizedBox20,
-              // LoadingWidget(),
+              LoadingAnimationWidget.flickr(
+                leftDotColor: kBlack,
+                rightDotColor: Colors.grey,
+                size: 10,
+              )
             ],
           ),
         ),

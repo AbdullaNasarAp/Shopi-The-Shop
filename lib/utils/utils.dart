@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const kBlack = Colors.black;
 const kWhite = Colors.white;
+const kBlue = Colors.blue;
 const errorColor = Colors.red;
 const ksizedBox10 = SizedBox(height: 10);
 const ksizedBox20 = SizedBox(height: 20);

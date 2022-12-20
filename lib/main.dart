@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shopi/controller/provider/auth/otp.dart';
 import 'package:shopi/controller/provider/auth/signin.dart';
 import 'package:shopi/controller/provider/auth/signup.dart';
+import 'package:shopi/controller/provider/auth/user_profile.dart';
 import 'package:shopi/controller/provider/new_password.dart';
 import 'package:shopi/controller/provider/splashnav.dart';
 import 'package:shopi/view/otp/otp.dart';
@@ -26,7 +27,8 @@ class Shopi extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => SignupProvider()),
         ChangeNotifierProvider(create: (context) => SignInProvider()),
         ChangeNotifierProvider(create: (context) => OtpScreenProvider()),
-        ChangeNotifierProvider(create: (context) => NewPasswordProvider())
+        ChangeNotifierProvider(create: (context) => NewPasswordProvider()),
+        ChangeNotifierProvider(create: (context) => LogoutController())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
