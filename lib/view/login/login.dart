@@ -47,6 +47,7 @@ class SignInScreen extends StatelessWidget {
                           fontwght: FontWeight.bold,
                           fontsz: 35,
                           textalign: TextAlign.center,
+                          maxline: 1,
                         ),
                       ],
                     ),
@@ -117,6 +118,7 @@ class SignInScreen extends StatelessWidget {
                             fontwght: FontWeight.w300,
                             fontsz: 15,
                             textalign: TextAlign.center,
+                            maxline: 1,
                           ),
                         ),
                       ],
@@ -139,6 +141,7 @@ class SignInScreen extends StatelessWidget {
                             fontwght: FontWeight.w300,
                             fontsz: 15,
                             textalign: TextAlign.center,
+                            maxline: 1,
                           ),
                         ),
                         ksizedBox10,
@@ -174,6 +177,7 @@ class SignInScreen extends StatelessWidget {
                           fontwght: FontWeight.w300,
                           fontsz: 15,
                           textalign: TextAlign.center,
+                          maxline: 1,
                         ),
                         TextButton(
                           onPressed: () =>
@@ -187,6 +191,7 @@ class SignInScreen extends StatelessWidget {
                               fontwght: FontWeight.bold,
                               fontsz: 15,
                               textalign: TextAlign.center,
+                              maxline: 1,
                             ),
                           ),
                         )

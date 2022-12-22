@@ -45,6 +45,7 @@ class ButtonContainer extends StatelessWidget {
           colors: colors,
           fontwght: fontwght,
           fontsz: fontsz,
+          maxline: 1,
         ),
       ),
     );

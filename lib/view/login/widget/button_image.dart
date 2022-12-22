@@ -53,6 +53,7 @@ class ButtonImage extends StatelessWidget {
                 fontwght: fontwght,
                 fontsz: fontsz,
                 textalign: textAlign,
+                maxline: 1,
               )
             ],
           ),

@@ -76,7 +76,7 @@ class SignInProvider with ChangeNotifier {
           await storage.write(key: 'refreshToken', value: value.refreshToken);
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
-                builder: (context) => const HomeScreen(),
+                builder: (context) => HomeScreen(),
               ),
               (route) => false);
           clearControllers();
@@ -98,7 +98,7 @@ class SignInProvider with ChangeNotifier {
         if (value != null) {
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
-                builder: (context) => const HomeScreen(),
+                builder: (context) => HomeScreen(),
               ),
               (route) => false);
           notifyListeners();

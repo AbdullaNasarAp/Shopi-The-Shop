@@ -47,6 +47,7 @@ class SignUpScreen extends StatelessWidget {
                           fontwght: FontWeight.bold,
                           fontsz: 35,
                           textalign: TextAlign.center,
+                          maxline: 2,
                         ),
                       ),
                     ],
@@ -149,6 +150,7 @@ class SignUpScreen extends StatelessWidget {
                         fontwght: FontWeight.w300,
                         fontsz: 15,
                         textalign: TextAlign.center,
+                        maxline: 2,
                       ),
                       InkWell(
                         onTap: () {},
@@ -159,6 +161,7 @@ class SignUpScreen extends StatelessWidget {
                           fontwght: FontWeight.bold,
                           fontsz: 15,
                           textalign: TextAlign.center,
+                          maxline: 2,
                         ),
                       )
                     ],

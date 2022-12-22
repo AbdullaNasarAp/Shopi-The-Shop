@@ -29,7 +29,7 @@ class SplashPro with ChangeNotifier {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => const HomeScreen(),
+            builder: (context) => HomeScreen(),
           ),
           (route) => false);
     } else {

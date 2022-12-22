@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:provider/provider.dart';
@@ -62,6 +61,7 @@ class _OTPScreenState extends State<OTPScreen> {
               fontwght: FontWeight.bold,
               fontsz: 22,
               textalign: TextAlign.left,
+              maxline: 2,
             ),
             Center(
               child: SingleChildScrollView(

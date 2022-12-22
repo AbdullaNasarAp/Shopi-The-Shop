@@ -34,6 +34,7 @@ class SplashScreen1 extends StatelessWidget {
                     colors: kBlack,
                     fontwght: FontWeight.bold,
                     fontsz: 70,
+                    maxline: 2,
                   ),
                   const TextTitle(
                     textalign: TextAlign.center,
@@ -42,6 +43,7 @@ class SplashScreen1 extends StatelessWidget {
                     colors: kBlack,
                     fontwght: FontWeight.w400,
                     fontsz: 15,
+                    maxline: 1,
                   ),
                 ],
               ),
