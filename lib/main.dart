@@ -4,7 +4,9 @@ import 'package:shopi/controller/provider/auth/otp.dart';
 import 'package:shopi/controller/provider/auth/signin.dart';
 import 'package:shopi/controller/provider/auth/signup.dart';
 import 'package:shopi/controller/provider/auth/user_profile.dart';
+import 'package:shopi/controller/provider/homepro/carousalpro.dart';
 import 'package:shopi/controller/provider/homepro/category.dart';
+import 'package:shopi/controller/provider/homepro/productpro.dart';
 import 'package:shopi/controller/provider/new_password.dart';
 import 'package:shopi/controller/provider/splashnav.dart';
 import 'package:shopi/view/splash/splash.dart';
@@ -28,7 +30,9 @@ class Shopi extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => OtpScreenProvider()),
         ChangeNotifierProvider(create: (context) => NewPasswordProvider()),
         ChangeNotifierProvider(create: (context) => LogoutController()),
-        ChangeNotifierProvider(create: (context) => CategoryProvider())
+        ChangeNotifierProvider(create: (context) => CategoryProvider()),
+        ChangeNotifierProvider(create: (context) => CarousalProvider()),
+        ChangeNotifierProvider(create: (context) => ProductProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

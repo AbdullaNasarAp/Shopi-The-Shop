@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
-import 'package:shopi/constant/apiconst.dart';
 import 'package:shopi/constant/static_cosnt.dart';
+import 'package:shopi/controller/provider/homepro/carousalpro.dart';
 import 'package:shopi/controller/provider/homepro/category.dart';
+import 'package:shopi/controller/provider/homepro/productpro.dart';
 import 'package:shopi/utils/utils.dart';
 import 'package:shopi/view/home/widget/applogo.dart';
 import 'package:shopi/view/home/widget/badge.dart';
 import 'package:shopi/view/home/widget/drawer.dart';
 import 'package:shopi/view/splash/widget/texttile.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -174,26 +174,38 @@ class CarouselSliders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider.builder(
-        itemCount: banner.length,
-        itemBuilder: (context, index, realIndex) {
-          return Container(
-            width: double.infinity,
-            height: 150,
-            decoration: const BoxDecoration(
-              color: kBlue,
-            ),
-            child: Image.network(
-              banner[index],
-              fit: BoxFit.cover,
-            ),
-          );
-        },
-        options: CarouselOptions(
-          autoPlay: true,
-          aspectRatio: 10 / 4,
-          viewportFraction: 1,
-        ));
+    return Consumer<CarousalProvider>(
+      builder: (context, value, child) {
+        return value.carousalList.isEmpty
+            ? Center(
+                child: LoadingAnimationWidget.flickr(
+                  leftDotColor: kBlack,
+                  rightDotColor: Colors.grey,
+                  size: 50,
+                ),
+              )
+            : CarouselSlider.builder(
+                itemCount: value.carousalList.length,
+                itemBuilder: (context, index, realIndex) {
+                  return Container(
+                    width: double.infinity,
+                    height: 150,
+                    decoration: const BoxDecoration(
+                      color: kBlue,
+                    ),
+                    child: Image.network(
+                      'http://172.16.1.180:5005/carousals/${value.carousalList[index].carousal}',
+                      fit: BoxFit.cover,
+                    ),
+                  );
+                },
+                options: CarouselOptions(
+                  autoPlay: true,
+                  aspectRatio: 10 / 4,
+                  viewportFraction: 1,
+                ));
+      },
+    );
   }
 }
 
@@ -206,104 +218,124 @@ class ProductList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),
-      child: ListView.separated(
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) => Container(
-                width: 140,
-                height: 150,
-                decoration: BoxDecoration(
-                  color: kWhite,
-                  border: Border.all(
-                    color: Colors.grey.shade100,
-                    style: BorderStyle.solid,
-                    strokeAlign: StrokeAlign.inside,
-                    width: 1,
+      child: Consumer<ProductProvider>(
+        builder: (context, value, child) {
+          return value.productList.isEmpty
+              ? Center(
+                  child: LoadingAnimationWidget.flickr(
+                    leftDotColor: kBlack,
+                    rightDotColor: Colors.grey,
+                    size: 50,
                   ),
-                  borderRadius: BorderRadius.circular(
-                    20,
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Card(
-                          elevation: 3,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          color: Colors.red[50],
-                          child: Image.asset(
-                            image1[index] ?? image1.length,
-                            width: 120,
-                            height: 120,
-                          ),
-                        ),
+                )
+              : ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) => Container(
+                    width: 140,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      color: kWhite,
+                      border: Border.all(
+                        color: Colors.grey.shade100,
+                        style: BorderStyle.solid,
+                        strokeAlign: StrokeAlign.inside,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(
+                        20,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const TextWithFamily(
-                            title: "Men Shirt Shadow Black ",
-                            ls: 0,
-                            colors: kIndigo,
-                            fontwght: FontWeight.bold,
-                            fontsz: 18,
-                            textalign: TextAlign.justify,
-                            maxline: 1,
-                            ws: -1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Card(
+                              elevation: 3,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              color: Colors.red[50],
+                              child: Image.network(
+                                "http://172.16.1.180:5005/products/${value.productList[index].image[0]}",
+                                width: 120,
+                                height: 120,
+                              ),
+                            ),
                           ),
-                          ksizedBox10,
-                          const TextTitle(
-                              title: "\$200.9",
-                              ls: 0,
-                              colors: kBlack,
-                              fontwght: FontWeight.normal,
-                              fontsz: 16,
-                              textalign: TextAlign.justify,
-                              maxline: 1),
-                          ksizedBox10,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
-                              Titlete(
-                                title: "\$599",
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextWithFamily(
+                                title: value.productList[index].name,
                                 ls: 0,
-                                colors: Colors.grey,
-                                fontwght: FontWeight.normal,
-                                fontsz: 17,
+                                colors: kIndigo,
+                                fontwght: FontWeight.bold,
+                                fontsz: 18,
                                 textalign: TextAlign.justify,
                                 maxline: 1,
+                                ws: -1,
                               ),
-                              Padding(
-                                padding:
-                                    EdgeInsets.only(right: 8.0, bottom: 10),
-                                child: TextTitle(
-                                    title: "24%",
+                              ksizedBox10,
+                              TextTitle(
+                                  title:
+                                      "₹ ${value.productList[index].discountPrice}"
+                                          .toString(),
+                                  ls: 0,
+                                  colors: kBlack,
+                                  fontwght: FontWeight.normal,
+                                  fontsz: 16,
+                                  textalign: TextAlign.justify,
+                                  maxline: 1),
+                              ksizedBox10,
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Titlete(
+                                    title:
+                                        " ₹ ${value.productList[index].price}"
+                                            .toString(),
                                     ls: 0,
-                                    colors: errorColor,
+                                    colors: Colors.grey,
                                     fontwght: FontWeight.normal,
                                     fontsz: 17,
                                     textalign: TextAlign.justify,
-                                    maxline: 1),
+                                    maxline: 1,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        right: 8.0, bottom: 10),
+                                    child: TextTitle(
+                                        title:
+                                            "${value.productList[index].offer}%"
+                                                .toString(),
+                                        ls: 0,
+                                        colors: errorColor,
+                                        fontwght: FontWeight.normal,
+                                        fontsz: 17,
+                                        textalign: TextAlign.justify,
+                                        maxline: 1),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-          separatorBuilder: (context, index) => const SizedBox(
-                width: 10,
-              ),
-          itemCount: image1.length),
+                  ),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: 10,
+                  ),
+                  itemCount: value.productList.length,
+                );
+        },
+      ),
     );
   }
 }
@@ -317,27 +349,35 @@ class CategoriesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CategoryProvider>(
       builder: (context, value, child) {
-        return ListView.separated(
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) => CircleAvatar(
-            backgroundImage: NetworkImage(
-                'http://172.16.1.104:5005/category/${value.categoryList[index].imagePath}'),
-            radius: 40,
-            child: TextTitle(
-              colors: kWhite,
-              fontsz: 20,
-              fontwght: FontWeight.w300,
-              ls: 0,
-              maxline: 1,
-              textalign: TextAlign.center,
-              title: value.categoryList[index].name,
-            ),
-          ),
-          separatorBuilder: (context, index) => const SizedBox(
-            width: 10,
-          ),
-          itemCount: value.categoryList.length,
-        );
+        return value.categoryList.isEmpty
+            ? Center(
+                child: LoadingAnimationWidget.flickr(
+                  leftDotColor: kBlack,
+                  rightDotColor: Colors.grey,
+                  size: 50,
+                ),
+              )
+            : ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      'http://172.16.1.180:5005/category/${value.categoryList[index].imagePath}'),
+                  radius: 40,
+                  child: TextTitle(
+                    colors: kWhite,
+                    fontsz: 20,
+                    fontwght: FontWeight.w300,
+                    ls: 0,
+                    maxline: 1,
+                    textalign: TextAlign.center,
+                    title: value.categoryList[index].name,
+                  ),
+                ),
+                separatorBuilder: (context, index) => const SizedBox(
+                  width: 10,
+                ),
+                itemCount: value.categoryList.length,
+              );
       },
     );
   }
