@@ -9,7 +9,12 @@ import 'package:shopi/controller/provider/homepro/category.dart';
 import 'package:shopi/controller/provider/homepro/productpro.dart';
 import 'package:shopi/controller/provider/new_password.dart';
 import 'package:shopi/controller/provider/splashnav.dart';
+import 'package:shopi/utils/utils.dart';
+import 'package:shopi/view/cart/cart.dart';
+import 'package:shopi/view/category/category.dart';
+import 'package:shopi/view/productdetail/productdetail.dart';
 import 'package:shopi/view/splash/splash.dart';
+import 'package:shopi/view/whishlist.dart/wishlist.dart';
 
 void main() {
   runApp(
@@ -37,6 +42,12 @@ class Shopi extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light().copyWith(
+          appBarTheme: const AppBarTheme(
+            backgroundColor: kWhite,
+            foregroundColor: kBlack,
+            centerTitle: true,
+            elevation: 0,
+          ),
           textTheme: const TextTheme(
             headline1: TextStyle(
               fontFamily: "Inter",
@@ -57,6 +68,12 @@ class Shopi extends StatelessWidget {
           ),
         ),
         home: const SplashScreen1(),
+        routes: {
+          ProductDetail.routeName: (context) => const ProductDetail(),
+          CartScreen.cartRoute: (context) => const CartScreen(),
+          WishList.wRishlist: (context) => const WishList(),
+          Categorys.catRoute: (context) => const Categorys(),
+        },
       ),
     );
   }
