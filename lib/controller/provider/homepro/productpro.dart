@@ -5,7 +5,7 @@ import 'package:shopi/service/home/product.dart';
 class ProductProvider with ChangeNotifier {
   List<ProductModel> productList = [];
   int selectedImage = 0;
-
+  bool loadingInitData = false;
   bool isLoading = false;
   ProductProvider() {
     callFunction();
@@ -36,10 +36,10 @@ class ProductProvider with ChangeNotifier {
     return productList.firstWhere((prod) => prod.id == id);
   }
 
-  ProductModel findByCategory(String category) {
-    return productList.firstWhere(
-      (prod) => prod.category == category,
-    );
+  List<ProductModel> findByCategory(String categoryid) {
+    return productList.where((prod) {
+      return prod.category.contains(categoryid);
+    }).toList();
   }
 
   void tapTap(int index) {

@@ -90,7 +90,7 @@ class ProductList extends StatelessWidget {
                                 ksizedBox10,
                                 TextTitle(
                                     title:
-                                        "₹ ${value.productList[index].discountPrice}"
+                                        "₹ ${value.productList[index].discountPrice.toStringAsFixed(1)}"
                                             .toString(),
                                     ls: 0,
                                     colors: kBlack,

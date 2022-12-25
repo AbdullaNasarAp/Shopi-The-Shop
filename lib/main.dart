@@ -9,6 +9,7 @@ import 'package:shopi/controller/provider/homepro/category.dart';
 import 'package:shopi/controller/provider/homepro/productpro.dart';
 import 'package:shopi/controller/provider/new_password.dart';
 import 'package:shopi/controller/provider/splashnav.dart';
+import 'package:shopi/model/home/product.dart';
 import 'package:shopi/utils/utils.dart';
 import 'package:shopi/view/cart/cart.dart';
 import 'package:shopi/view/category/category.dart';
@@ -72,7 +73,7 @@ class Shopi extends StatelessWidget {
           ProductDetail.routeName: (context) => const ProductDetail(),
           CartScreen.cartRoute: (context) => const CartScreen(),
           WishList.wRishlist: (context) => const WishList(),
-          Categorys.catRoute: (context) => const Categorys(),
+          Categorys.catRoute: (context) => Categorys(),
         },
       ),
     );

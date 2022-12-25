@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shopi/model/home/product.dart';
 import 'package:shopi/utils/utils.dart';
 import 'package:shopi/view/cart/cart.dart';
 import 'package:shopi/view/home/widget/applogo.dart';
@@ -28,6 +29,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<ProductModel> productlsit;
     return Scaffold(
       appBar: homeBar(context),
       drawer: const MainDrawer(),

@@ -108,3 +108,40 @@ class Titlete extends StatelessWidget {
     );
   }
 }
+
+// class FixedAmount extends StatelessWidget {
+//   const FixedAmount({
+//     Key? key,
+//     required this.title,
+//     required this.ls,
+//     required this.colors,
+//     required this.fontwght,
+//     required this.fontsz,
+//     required this.textalign,
+//     required this.maxline,
+//   }) : super(key: key);
+//   final String title;
+//   final double ls;
+//   final Color colors;
+//   final FontWeight fontwght;
+//   final double fontsz;
+//   final TextAlign textalign;
+//   final int maxline;
+//   @override
+//   Widget build(BuildContext context) {
+//     return Text(
+//       title,
+      
+//       style: TextStyle(
+//         letterSpacing: ls,
+//         fontFamily: Theme.of(context).textTheme.headline1?.fontFamily,
+//         color: colors,
+//         fontSize: fontsz,
+//         fontWeight: fontwght,
+//         decoration: TextDecoration.lineThrough,
+//       ),
+//       textAlign: textalign,
+//       maxLines: maxline,
+//     );
+//   }
+// }

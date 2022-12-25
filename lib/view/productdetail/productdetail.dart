@@ -26,7 +26,7 @@ class ProductDetail extends StatelessWidget {
             children: [
               Container(
                 width: double.infinity,
-                height: 400,
+                height: 450,
                 decoration: BoxDecoration(
                   color: Colors.red[100],
                   borderRadius: const BorderRadius.only(
@@ -61,37 +61,19 @@ class ProductDetail extends StatelessWidget {
                       builder: (context, value, child) {
                         return Image.network(
                           "http://172.16.1.180:5005/products/${loadedProduct.image[value.selectedImage]}",
-                          width: 200,
-                          height: 220,
+                          width: 230,
+                          height: 240,
+                          filterQuality: FilterQuality.high,
+                          fit: BoxFit.cover,
                         );
                       },
                     ),
-//                     GestureDetector(
-//       onTap: () {
-//         setState(() {
-//           selectedImage = index;
-//         });
-//       },
-//       child: AnimatedContainer(
-//         duration: defaultDuration,
-//         margin: EdgeInsets.only(right: 15),
-//         padding: EdgeInsets.all(8),
-//         height: getProportionateScreenWidth(48),
-//         width: getProportionateScreenWidth(48),
-//         decoration: BoxDecoration(
-//           color: Colors.white,
-//           borderRadius: BorderRadius.circular(10),
-//           border: Border.all(
-//               color: kPrimaryColor.withOpacity(selectedImage == index ? 1 : 0)),
-//         ),
-//         child: Image.asset(widget.product.images[index]),
-//       ),
-//     );
                     ksizedBox50,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ...List.generate(
+                          growable: true,
                           loadedProduct.image.length,
                           (index) => Consumer<ProductProvider>(
                             builder: (context, value, child) {
@@ -144,7 +126,8 @@ class ProductDetail extends StatelessWidget {
                               ),
                             ),
                             TextWithFamily(
-                              title: "₹ ${loadedProduct.discountPrice}",
+                              title:
+                                  "₹ ${loadedProduct.discountPrice.toStringAsFixed(1)}",
                               ls: 0,
                               colors: kIndigo,
                               fontwght: FontWeight.w400,
