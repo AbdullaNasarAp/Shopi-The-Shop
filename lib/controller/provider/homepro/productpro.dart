@@ -7,6 +7,8 @@ class ProductProvider with ChangeNotifier {
   int selectedImage = 0;
   bool loadingInitData = false;
   bool isLoading = false;
+  ProductModel? product;
+
   ProductProvider() {
     callFunction();
   }
@@ -31,6 +33,14 @@ class ProductProvider with ChangeNotifier {
       }
     });
   }
+
+  // List<ProductModel> get items {
+  //   return [...productList];
+  // }
+
+  // List<ProductModel> get favoriteItems {
+  //   return productList.where((prodItem) => prodItem.isFavor).toList();
+  // }
 
   ProductModel findById(String id) {
     return productList.firstWhere((prod) => prod.id == id);

@@ -83,7 +83,7 @@ class OtpScreenProvider extends ChangeNotifier {
                       key: 'refreshToken', value: value.refreshToken);
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
-                        builder: (context) => HomeScreen(),
+                        builder: (context) => const HomeScreen(),
                       ),
                       (route) => false);
                   loading = false;

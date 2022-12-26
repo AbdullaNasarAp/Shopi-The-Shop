@@ -101,8 +101,7 @@ class Categorys extends StatelessWidget {
                                       ksizedBox10,
                                       TextTitle(
                                           title:
-                                              "₹ ${productCategory[index].discountPrice}"
-                                                  .toString(),
+                                              "₹ ${productCategory[index].discountPrice.toStringAsFixed(1)}",
                                           ls: 0,
                                           colors: kBlack,
                                           fontwght: FontWeight.normal,

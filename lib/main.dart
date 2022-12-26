@@ -9,13 +9,14 @@ import 'package:shopi/controller/provider/homepro/category.dart';
 import 'package:shopi/controller/provider/homepro/productpro.dart';
 import 'package:shopi/controller/provider/new_password.dart';
 import 'package:shopi/controller/provider/splashnav.dart';
-import 'package:shopi/model/home/product.dart';
 import 'package:shopi/utils/utils.dart';
 import 'package:shopi/view/cart/cart.dart';
 import 'package:shopi/view/category/category.dart';
 import 'package:shopi/view/productdetail/productdetail.dart';
 import 'package:shopi/view/splash/splash.dart';
 import 'package:shopi/view/whishlist.dart/wishlist.dart';
+
+import 'controller/provider/wishlist.dart';
 
 void main() {
   runApp(
@@ -39,6 +40,7 @@ class Shopi extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => CategoryProvider()),
         ChangeNotifierProvider(create: (context) => CarousalProvider()),
         ChangeNotifierProvider(create: (context) => ProductProvider()),
+        ChangeNotifierProvider(create: (context) => WishlistProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -73,7 +75,7 @@ class Shopi extends StatelessWidget {
           ProductDetail.routeName: (context) => const ProductDetail(),
           CartScreen.cartRoute: (context) => const CartScreen(),
           WishList.wRishlist: (context) => const WishList(),
-          Categorys.catRoute: (context) => Categorys(),
+          Categorys.catRoute: (context) => const Categorys(),
         },
       ),
     );

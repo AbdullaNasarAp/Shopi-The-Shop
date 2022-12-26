@@ -1,11 +1,12 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shopi/controller/provider/homepro/productpro.dart';
+import 'package:shopi/controller/provider/wishlist.dart';
 import 'package:shopi/utils/utils.dart';
 import 'package:shopi/view/login/widget/button_container.dart';
+import 'package:shopi/view/productdetail/widget/recommended.dart';
 import 'package:shopi/view/splash/widget/texttile.dart';
 
 class ProductDetail extends StatelessWidget {
@@ -19,6 +20,38 @@ class ProductDetail extends StatelessWidget {
         .findById(productId);
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.red[100],
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const Icon(
+              FontAwesomeIcons.arrowLeft,
+              color: kBlack,
+            ),
+          ),
+          actions: [
+            Consumer2<WishlistProvider, ProductProvider>(
+              builder: (context, value, value2, child) {
+                final product = value2.product;
+                return GestureDetector(
+                  onTap: () => value.addRemoveWishlistItem(loadedProduct.id),
+                  child: Icon(
+                    value.favorProduct.contains(loadedProduct.id)
+                        ? Icons.favorite
+                        : Icons.favorite_outline_outlined,
+                    color: value.favorProduct.contains(loadedProduct.id)
+                        ? AppColors.redColor
+                        : AppColors.blackcolor,
+                    size: 35,
+                  ),
+                );
+              },
+            )
+          ],
+        ),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -36,27 +69,6 @@ class ProductDetail extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          icon: const Icon(
-                            FontAwesomeIcons.arrowLeft,
-                            color: kBlack,
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const FaIcon(
-                            FontAwesomeIcons.heart,
-                            color: kBlack,
-                          ),
-                        ),
-                      ],
-                    ),
                     Consumer<ProductProvider>(
                       builder: (context, value, child) {
                         return Image.network(
@@ -269,7 +281,17 @@ class ProductDetail extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )
+                    ),
+                    ksizedBox50,
+                    const TextTitle(
+                        title: "Recommended",
+                        ls: 0,
+                        colors: kBlack,
+                        fontwght: FontWeight.bold,
+                        fontsz: 20,
+                        textalign: TextAlign.justify,
+                        maxline: 1),
+                    Recommended()
                   ],
                 ),
               ),

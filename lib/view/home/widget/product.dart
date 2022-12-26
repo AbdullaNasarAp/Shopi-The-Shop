@@ -38,12 +38,11 @@ class ProductList extends StatelessWidget {
                       );
                     },
                     child: Container(
-                      width: 140,
+                      width: 150,
                       height: 150,
                       decoration: BoxDecoration(
-                        color: kWhite,
                         border: Border.all(
-                          color: Colors.grey.shade100,
+                          color: Colors.grey.shade200,
                           style: BorderStyle.solid,
                           strokeAlign: StrokeAlign.inside,
                           width: 1,
@@ -60,7 +59,7 @@ class ProductList extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Card(
-                                elevation: 3,
+                                elevation: 10,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
                                 color: Colors.red[50],

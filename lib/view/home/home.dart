@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:shopi/model/home/product.dart';
+import 'package:provider/provider.dart';
+import 'package:shopi/controller/provider/homepro/carousalpro.dart';
 import 'package:shopi/utils/utils.dart';
 import 'package:shopi/view/cart/cart.dart';
 import 'package:shopi/view/home/widget/applogo.dart';
@@ -12,24 +13,11 @@ import 'package:shopi/view/home/widget/product.dart';
 import 'package:shopi/view/splash/widget/texttile.dart';
 import 'package:shopi/view/whishlist.dart/wishlist.dart';
 
-// Consumer<Product>(
-//             builder: (ctx, product, _) => IconButton(
-//               icon: Icon(
-//                 product.isFavorite ? Icons.favorite : Icons.favorite_border,
-//               ),
-//               color: Theme.of(context).colorScheme.secondary,
-//               onPressed: () {
-//                 product.toggleFavoriteStatus();
-//               },
-//             ),
-//           ),
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<ProductModel> productlsit;
     return Scaffold(
       appBar: homeBar(context),
       drawer: const MainDrawer(),
@@ -158,7 +146,7 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pushNamed(WishList.wRishlist);
                   },
-                  icon: FaIcon(FontAwesomeIcons.heart)),
+                  icon: const FaIcon(FontAwesomeIcons.heart)),
               InkWell(
                 onTap: () {
                   Navigator.of(context).pushNamed(CartScreen.cartRoute);
