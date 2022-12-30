@@ -21,4 +21,19 @@ class ProductService {
     }
     return null;
   }
+
+  Future<ProductModel?> getAProduct(String productId) async {
+    Dio dios = await Interceptorapi().getApiUser();
+    try {
+      final Response response = await dios
+          .get('${ApiConstant.mainUrl + ApiEndPoints.product}/$productId');
+      if (response.statusCode! >= 200 && response.statusCode! <= 299) {
+        final ProductModel product = ProductModel.fromJson(response.data);
+        return product;
+      }
+    } catch (e) {
+      AppExceptions.errorHandler(e);
+    }
+    return null;
+  }
 }

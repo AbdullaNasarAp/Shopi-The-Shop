@@ -4,6 +4,7 @@ import 'package:shopi/controller/provider/auth/otp.dart';
 import 'package:shopi/controller/provider/auth/signin.dart';
 import 'package:shopi/controller/provider/auth/signup.dart';
 import 'package:shopi/controller/provider/auth/user_profile.dart';
+import 'package:shopi/controller/provider/cart/cartpro.dart';
 import 'package:shopi/controller/provider/homepro/carousalpro.dart';
 import 'package:shopi/controller/provider/homepro/category.dart';
 import 'package:shopi/controller/provider/homepro/productpro.dart';
@@ -16,6 +17,7 @@ import 'package:shopi/view/productdetail/productdetail.dart';
 import 'package:shopi/view/splash/splash.dart';
 import 'package:shopi/view/whishlist.dart/wishlist.dart';
 
+import 'controller/provider/productcontroller.dart';
 import 'controller/provider/wishlist.dart';
 
 void main() {
@@ -40,7 +42,9 @@ class Shopi extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => CategoryProvider()),
         ChangeNotifierProvider(create: (context) => CarousalProvider()),
         ChangeNotifierProvider(create: (context) => ProductProvider()),
-        ChangeNotifierProvider(create: (context) => WishlistProvider())
+        ChangeNotifierProvider(create: (context) => ProductProviderpro()),
+        ChangeNotifierProvider(create: (context) => WishlistProvider()),
+        ChangeNotifierProvider(create: (context) => CartProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -11,6 +11,7 @@ const ksizedBox10 = SizedBox(height: 10);
 const ksizedBox20 = SizedBox(height: 20);
 const ksizedBoxW10 = SizedBox(width: 10);
 const ksizedBoxW20 = SizedBox(width: 20);
+const ksizedBoxW70 = SizedBox(width: 70);
 const ksizedBox50 = SizedBox(height: 50);
 
 // "http://172.16.3.122:3000"
