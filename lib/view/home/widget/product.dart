@@ -67,6 +67,7 @@ class ProductList extends StatelessWidget {
                                   "http://172.16.1.180:5005/products/${value.productList[index].image[0]}",
                                   width: 120,
                                   height: 120,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ),

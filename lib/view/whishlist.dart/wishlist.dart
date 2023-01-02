@@ -72,8 +72,18 @@ class WishListItem extends StatelessWidget {
                     child: Column(
                       children: const [
                         SizedBox(height: 40),
-                        Image(image: AssetImage('assets/images/Fast Cart.png')),
-                        Text('Your wishlist is empty'),
+                        Image(
+                            image: AssetImage(
+                                'assets/images/icons8-nothing-found-100.png')),
+                        TextWithFamily(
+                            title: "Wishlist is empty",
+                            ls: 0,
+                            colors: kIndigo,
+                            fontwght: FontWeight.w300,
+                            fontsz: 15,
+                            textalign: TextAlign.justify,
+                            maxline: 1,
+                            ws: 0),
                       ],
                     ))
                 : ListView.separated(

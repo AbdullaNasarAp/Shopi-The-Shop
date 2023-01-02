@@ -10,7 +10,7 @@ class CartProvider with ChangeNotifier {
   CartProvider() {
     startLoading();
   }
-  CartGetModel? cartList;
+  CartModel? cartList;
   bool loading = false;
   int quantity = 1;
   List<String> cartItemsId = [];
@@ -87,6 +87,11 @@ class CartProvider with ChangeNotifier {
     }
     totalProductCount = count;
     notifyListeners();
+  }
+
+  totalSaved(dynamic totalPrice, dynamic totalDiscount) {
+    dynamic totalSave = totalPrice ?? 0 - totalDiscount ?? 0;
+    return totalSave;
   }
 
   void removeFromCart(String productId) async {
