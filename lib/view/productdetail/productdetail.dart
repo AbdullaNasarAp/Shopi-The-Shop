@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:shopi/controller/provider/cart/cartpro.dart';
 import 'package:shopi/controller/provider/homepro/productpro.dart';
 import 'package:shopi/controller/provider/wishlist.dart';
-import 'package:shopi/model/cart/cart_model.dart';
 import 'package:shopi/utils/utils.dart';
 import 'package:shopi/view/cart/cart.dart';
 import 'package:shopi/view/login/widget/button_container.dart';
@@ -50,7 +49,6 @@ class ProductDetail extends StatelessWidget {
           actions: [
             Consumer2<WishlistProvider, ProductProvider>(
               builder: (context, value, value2, child) {
-                final product = value2.product;
                 return GestureDetector(
                   onTap: () => value.addRemoveWishlistItem(loadedProduct.id),
                   child: Icon(
@@ -341,7 +339,7 @@ class ProductDetail extends StatelessWidget {
                             fontsz: 20,
                             textalign: TextAlign.justify,
                             maxline: 1),
-                        Recommended()
+                        const Recommended()
                       ],
                     ),
                   ),

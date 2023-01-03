@@ -50,7 +50,7 @@ class CartScreen extends StatelessWidget {
                           width: double.infinity,
                           child: ListView.separated(
                             shrinkWrap: true,
-                            physics: ScrollPhysics(),
+                            physics: const ScrollPhysics(),
                             separatorBuilder: (context, index) {
                               return ksizedBox10;
                             },

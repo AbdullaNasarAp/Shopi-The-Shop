@@ -19,7 +19,7 @@ class WishTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 100,
       width: 100,
       child: ListTile(
@@ -71,7 +71,7 @@ class WishTile extends StatelessWidget {
         ),
         trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             TextWithFamily(
                 title: "Swipe to delete",
                 ls: 0,

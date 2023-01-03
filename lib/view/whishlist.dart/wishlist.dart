@@ -136,9 +136,25 @@ class WishListItem extends StatelessWidget {
     return showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Are you sure?'),
-        content: const Text(
-          'Do you want to remove the item from the cart?',
+        title: const TextWithFamily(
+          ws: 0,
+          title: "Are you sure?",
+          ls: 0,
+          colors: kBlack,
+          fontwght: FontWeight.bold,
+          fontsz: 17,
+          textalign: TextAlign.justify,
+          maxline: 1,
+        ),
+        content: const TextWithFamily(
+          ws: 0,
+          title: "Do you want to remove the item from the Wishlist?",
+          ls: 0,
+          colors: kIndigo,
+          fontwght: FontWeight.bold,
+          fontsz: 17,
+          textalign: TextAlign.justify,
+          maxline: 2,
         ),
         actions: <Widget>[
           TextButton(

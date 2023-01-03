@@ -33,4 +33,10 @@ class AppColors {
   static const whiteColor70 = Colors.white70;
   static const whiteColor38 = Colors.white38;
   static const yellowColor = Colors.yellow;
+
+  Color get baseShimmerColor => Colors.grey.shade500;
+
+  Color get highlightShimmerColor => Colors.grey.shade400;
+
+  Color get widgetShimmerColor => Colors.grey.shade100;
 }

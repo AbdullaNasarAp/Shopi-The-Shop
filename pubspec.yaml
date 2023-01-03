@@ -35,6 +35,7 @@ dependencies:
   carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
+  fancy_shimmer_image: ^2.0.2
   flutter:
     sdk: flutter
   flutter_otp_text_field: ^1.1.1
@@ -44,6 +45,7 @@ dependencies:
   google_sign_in: ^5.4.2
   loading_animation_widget: ^1.2.0+3
   provider: ^6.0.4
+  shimmer: ^2.0.0
   smooth_page_indicator: ^1.0.0+2
 
 dev_dependencies:

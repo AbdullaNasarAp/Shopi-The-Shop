@@ -33,7 +33,7 @@ class CartCard extends StatelessWidget {
               style: BorderStyle.solid,
             ),
             borderRadius: BorderRadius.circular(
-              20,
+              30,
             ),
             color: Colors.red[50],
           ),
@@ -120,11 +120,13 @@ class CartCard extends StatelessWidget {
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        // setState(() {
-                                        //   if (_personCounter > 1) {
-                                        //     _personCounter--;
-                                        //   } else {}
-                                        // });
+                                        value.incrementOrDecrementQuantity(
+                                          -1,
+                                          value.cartList!.products[index]
+                                              .product.id,
+                                          value.cartList!.products[index].size,
+                                          value.cartList!.products[index].qty,
+                                        );
                                       },
                                       child: Container(
                                         width: 40.0,
@@ -158,9 +160,13 @@ class CartCard extends StatelessWidget {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        // setState(() {
-                                        //   _personCounter++;
-                                        // });
+                                        value.incrementOrDecrementQuantity(
+                                          1,
+                                          value.cartList!.products[index]
+                                              .product.id,
+                                          value.cartList!.products[index].size,
+                                          value.cartList!.products[index].qty,
+                                        );
                                       },
                                       child: Container(
                                         width: 40.0,
@@ -192,7 +198,7 @@ class CartCard extends StatelessWidget {
                             TextWithFamily(
                               ws: 0,
                               title:
-                                  "₹${value.cartList?.products[index].discountPrice}",
+                                  "₹${(value.cartList?.products[index].price ?? 0) - (value.cartList?.products[index].discountPrice)}",
                               ls: 0,
                               colors: kIndigo,
                               fontwght: FontWeight.bold,
@@ -218,29 +224,63 @@ class CartCard extends StatelessWidget {
                   ],
                 ),
               ),
-              // GestureDetector(
-              //   onTap: () {
-              //
-              //   },
-              //   child: const ButtonContainer(
-              //       kWidth: double.infinity,
-              //       kHeight: 50,
-              //       kColors: kBlack,
-              //       colors: kWhite,
-              //       title: "Delete",
-              //       ls: 0,
-              //       fontwght: FontWeight.bold,
-              //       fontsz: 15,
-              //       textalign: TextAlign.center,
-              //       bRadius: 20),
-              // )
-              IconButton(
-                  onPressed: () {
-                    log('pressed');
-                    value.removeFromCart(
-                        value.cartList!.products[index].product.id);
-                  },
-                  icon: Icon(Icons.delete))
+              InkWell(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (ctx) => AlertDialog(
+                      title: const TextWithFamily(
+                        ws: 0,
+                        title: "Are you sure?",
+                        ls: 0,
+                        colors: kBlack,
+                        fontwght: FontWeight.bold,
+                        fontsz: 17,
+                        textalign: TextAlign.justify,
+                        maxline: 1,
+                      ),
+                      content: const TextWithFamily(
+                        ws: 0,
+                        title: "Do you want to remove the item from the Cart?",
+                        ls: 0,
+                        colors: kIndigo,
+                        fontwght: FontWeight.bold,
+                        fontsz: 17,
+                        textalign: TextAlign.justify,
+                        maxline: 2,
+                      ),
+                      actions: <Widget>[
+                        TextButton(
+                          child: const Text('No'),
+                          onPressed: () {
+                            Navigator.of(ctx).pop(false);
+                          },
+                        ),
+                        TextButton(
+                          child: const Text('Yes'),
+                          onPressed: () {
+                            value.removeFromCart(
+                                value.cartList!.products[index].product.id);
+                            Navigator.of(ctx).pop(true);
+                          },
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                child: const ButtonContainer(
+                  kWidth: double.infinity,
+                  kHeight: 50,
+                  kColors: kBlack,
+                  colors: kWhite,
+                  title: "Delete",
+                  ls: 0,
+                  fontwght: FontWeight.bold,
+                  fontsz: 20,
+                  textalign: TextAlign.center,
+                  bRadius: 30,
+                ),
+              )
             ],
           ),
         );
