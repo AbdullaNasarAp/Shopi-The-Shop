@@ -6,7 +6,7 @@ import 'package:shopi/view/home/widget/applogo.dart';
 import 'package:shopi/view/home/widget/badge.dart';
 import 'package:shopi/view/home/widget/category.dart';
 import 'package:shopi/view/home/widget/drawer.dart';
-import 'package:shopi/view/home/widget/carousal.dart';
+import 'package:shopi/view/home/widget/carousal/carousal.dart';
 import 'package:shopi/view/home/widget/product.dart';
 import 'package:shopi/view/splash/widget/texttile.dart';
 import 'package:shopi/view/whishlist.dart/wishlist.dart';

@@ -9,6 +9,8 @@ const kIndigo = Color(0xFF1A237E);
 const errorColor = Colors.red;
 const ksizedBox10 = SizedBox(height: 10);
 const ksizedBox20 = SizedBox(height: 20);
+const ksizedBox30 = SizedBox(height: 30);
+const ksizedBox40 = SizedBox(height: 40);
 const ksizedBoxW10 = SizedBox(width: 10);
 const ksizedBoxW20 = SizedBox(width: 20);
 const ksizedBoxW70 = SizedBox(width: 70);
@@ -34,9 +36,9 @@ class AppColors {
   static const whiteColor38 = Colors.white38;
   static const yellowColor = Colors.yellow;
 
-  Color get baseShimmerColor => Colors.grey.shade500;
+  static Color baseShimmerColor = Colors.grey.shade500;
 
-  Color get highlightShimmerColor => Colors.grey.shade400;
+  static Color highlightShimmerColor = Colors.grey.shade400;
 
-  Color get widgetShimmerColor => Colors.grey.shade100;
+  static Color widgetShimmerColor = Colors.grey.shade100;
 }

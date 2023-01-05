@@ -154,7 +154,7 @@ class ProductDetail extends StatelessWidget {
                                 ),
                                 TextWithFamily(
                                   title:
-                                      "₹ ${loadedProduct.discountPrice.toStringAsFixed(1)}",
+                                      "₹ ${(loadedProduct.price) - (loadedProduct.discountPrice)}",
                                   ls: 0,
                                   colors: kIndigo,
                                   fontwght: FontWeight.w400,

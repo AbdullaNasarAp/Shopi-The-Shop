@@ -24,7 +24,7 @@ class CartCard extends StatelessWidget {
     return Consumer<CartProvider>(
       builder: (context, value, child) {
         return Container(
-          height: 210,
+          height: 209,
           width: double.infinity,
           decoration: BoxDecoration(
             border: Border.all(
@@ -276,7 +276,7 @@ class CartCard extends StatelessWidget {
                   title: "Delete",
                   ls: 0,
                   fontwght: FontWeight.bold,
-                  fontsz: 20,
+                  fontsz: 16,
                   textalign: TextAlign.center,
                   bRadius: 30,
                 ),

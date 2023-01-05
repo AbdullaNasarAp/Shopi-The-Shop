@@ -113,9 +113,8 @@ class WishListItem extends StatelessWidget {
                               },
                               image:
                                   "http://172.16.1.180:5005/products/${wishListValue.wishList!.products[index].product.image[0]}",
-                              title1: wishListValue.wishList!.products[index]
-                                  .product.discountPrice
-                                  .toStringAsFixed(1),
+                              title1:
+                                  "${(wishListValue.wishList!.products[index].product.price) - (wishListValue.wishList!.products[index].product.discountPrice)}",
                               title2: wishListValue
                                   .wishList!.products[index].product.price
                                   .toString(),

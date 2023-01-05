@@ -4,6 +4,7 @@ import 'package:shopi/controller/provider/cart/cartpro.dart';
 import 'package:shopi/utils/utils.dart';
 import 'package:shopi/view/cart/widget/bottomwidget.dart';
 import 'package:shopi/view/cart/widget/cart_card.dart';
+import 'package:shopi/view/login/widget/button_container.dart';
 import 'package:shopi/view/splash/widget/texttile.dart';
 
 class CartScreen extends StatelessWidget {
@@ -68,14 +69,26 @@ class CartScreen extends StatelessWidget {
                             sub: "${value.cartList?.products.length}"),
                         ksizedBox10,
                         CartBottomWidget(
-                            title: "Total Discount",
+                            title: "Total Price",
                             sub:
-                                "${value.cartList?.totalDiscount.toStringAsFixed(1)}"),
+                                "${(value.cartList?.totalPrice ?? 0) - (value.cartList?.totalDiscount ?? 0)}"),
                         ksizedBox10,
                         CartBottomWidget(
                             title: "Total Saved",
                             sub:
-                                "${value.totalSaved(value.cartList?.totalPrice ?? 0, value.cartList?.totalDiscount ?? 0)}"),
+                                "${value.cartList?.totalDiscount.toStringAsFixed(1) ?? 0}"),
+                        ksizedBox40,
+                        const ButtonContainer(
+                            kWidth: double.infinity,
+                            kHeight: 60,
+                            kColors: kBlack,
+                            colors: kWhite,
+                            title: "Checkout",
+                            ls: 0,
+                            fontwght: FontWeight.bold,
+                            fontsz: 17,
+                            textalign: TextAlign.center,
+                            bRadius: 20)
                       ],
                     ),
             );

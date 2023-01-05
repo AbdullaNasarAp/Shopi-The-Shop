@@ -58,15 +58,15 @@ class WishTile extends StatelessWidget {
                 textalign: TextAlign.justify,
                 maxline: 1,
                 ws: 0),
-            TextWithFamily(
-                title: title2,
-                ls: 0,
-                colors: kIndigo,
-                fontwght: FontWeight.w300,
-                fontsz: 15,
-                textalign: TextAlign.justify,
-                maxline: 1,
-                ws: 0)
+            Titlete(
+              title: title2,
+              ls: 0,
+              colors: kGrey,
+              fontwght: FontWeight.w300,
+              fontsz: 15,
+              textalign: TextAlign.justify,
+              maxline: 1,
+            )
           ],
         ),
         trailing: Column(
