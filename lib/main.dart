@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
+import 'package:shopi/constant/static_cosnt.dart';
+import 'package:shopi/controller/provider/address/address.dart';
 import 'package:shopi/controller/provider/auth/otp.dart';
 import 'package:shopi/controller/provider/auth/signin.dart';
 import 'package:shopi/controller/provider/auth/signup.dart';
@@ -11,9 +14,11 @@ import 'package:shopi/controller/provider/homepro/productpro.dart';
 import 'package:shopi/controller/provider/new_password.dart';
 import 'package:shopi/controller/provider/splashnav.dart';
 import 'package:shopi/utils/utils.dart';
+import 'package:shopi/view/address/address.dart';
 import 'package:shopi/view/cart/cart.dart';
 import 'package:shopi/view/category/category.dart';
 import 'package:shopi/view/productdetail/productdetail.dart';
+import 'package:shopi/view/profile/profile.dart';
 import 'package:shopi/view/splash/splash.dart';
 import 'package:shopi/view/whishlist.dart/wishlist.dart';
 
@@ -44,7 +49,8 @@ class Shopi extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ProductProvider()),
         ChangeNotifierProvider(create: (context) => ProductProviderpro()),
         ChangeNotifierProvider(create: (context) => WishlistProvider()),
-        ChangeNotifierProvider(create: (context) => CartProvider())
+        ChangeNotifierProvider(create: (context) => CartProvider()),
+        ChangeNotifierProvider(create: (context) => AddressController())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -80,6 +86,8 @@ class Shopi extends StatelessWidget {
           CartScreen.cartRoute: (context) => const CartScreen(),
           WishList.wRishlist: (context) => const WishList(),
           Categorys.catRoute: (context) => const Categorys(),
+          ProfileScreen.routeName: (context) => const ProfileScreen(),
+          AddressScreen.routeName: (context) => const AddressScreen()
         },
       ),
     );

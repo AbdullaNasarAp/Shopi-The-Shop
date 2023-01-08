@@ -8,6 +8,7 @@ const kskyBlue = Color(0xFFF3E5F5);
 const kIndigo = Color(0xFF1A237E);
 const errorColor = Colors.red;
 const ksizedBox10 = SizedBox(height: 10);
+const ksizedBox5 = SizedBox(height: 5);
 const ksizedBox20 = SizedBox(height: 20);
 const ksizedBox30 = SizedBox(height: 30);
 const ksizedBox40 = SizedBox(height: 40);

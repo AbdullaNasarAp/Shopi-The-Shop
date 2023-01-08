@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:shopi/controller/provider/cart/cartpro.dart';
 import 'package:shopi/utils/utils.dart';
 import 'package:shopi/view/cart/cart.dart';
 import 'package:shopi/view/home/widget/applogo.dart';
@@ -17,7 +19,16 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: homeBar(context),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        toolbarHeight: 70,
+        elevation: 0,
+        backgroundColor: kWhite,
+        title: HomeAppBar(),
+        // actions: [
+
+        // ],
+      ),
       drawer: const MainDrawer(),
       body: SingleChildScrollView(
         child: Column(
@@ -127,45 +138,63 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+}
 
-  AppBar homeBar(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      toolbarHeight: 70,
-      elevation: 0,
-      backgroundColor: kWhite,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const AppLogo(iFontsize: 25, iHeight: 50, iWidth: 50),
-          Row(
-            children: [
-              IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(WishList.wRishlist);
-                  },
-                  icon: const FaIcon(FontAwesomeIcons.heart)),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).pushNamed(CartScreen.cartRoute);
+class HomeAppBar extends StatelessWidget {
+  const HomeAppBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        IconButton(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: const FaIcon(FontAwesomeIcons.bars)),
+        const AppLogo(iFontsize: 25, iHeight: 50, iWidth: 50),
+        Row(
+          children: [
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(WishList.wRishlist);
                 },
-                child: const Badge(
-                  value: "",
-                  color: kGrey,
-                  child: Icon(
-                    FontAwesomeIcons.cartShopping,
-                    size: 30,
-                    color: kBlack,
-                  ),
-                ),
+                icon: const FaIcon(FontAwesomeIcons.heart)),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed(CartScreen.cartRoute);
+              },
+              child: Consumer<CartProvider>(
+                builder: (context, value, child) {
+                  return Badge(
+                    value: value.itemCount.toString(),
+                    color: kGrey,
+                    child: const Icon(
+                      FontAwesomeIcons.cartShopping,
+                      size: 30,
+                      color: kBlack,
+                    ),
+                  );
+                },
               ),
-            ],
-          ),
-        ],
-      ),
-      // actions: [
-
-      // ],
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
+
+// class HomeAppBar extends StatelessWidget {
+//   const HomeAppBar({
+//     Key? key,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return 
+//   }
+// }

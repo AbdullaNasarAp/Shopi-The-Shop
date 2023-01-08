@@ -23,6 +23,10 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  int get itemCount {
+    return cartList?.products.length ?? 0;
+  }
+
   void getCartItems() async {
     loading = true;
     notifyListeners();
