@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -12,15 +13,18 @@ class AddressService {
     Dio dios = await Interceptorapi().getApiUser();
     try {
       final Response response = await dios.post(
-        ApiConstant.mainUrl + ApiEndPoints.address,
-        data: model.toJson(),
+        ApiUrl.apiUrl + ApiEndPoints.address,
+        data: jsonEncode(
+          model.toJson(),
+        ),
       );
-
-      if (response.statusCode == 201) {
-        final String result = response.data['message'];
-        return result;
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final addressRes = response.data['message'];
+        log(response.toString());
+        return addressRes;
       }
-    } catch (e) {
+    } on DioError catch (e) {
+      log(e.message);
       AppExceptions.errorHandler(e);
     }
     return null;
@@ -33,7 +37,7 @@ class AddressService {
       final Response response =
           await dios.get(ApiConstant.mainUrl + ApiEndPoints.address);
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         // log("message4");
         final List<AddressGetModel> addressList = (response.data as List)
             .map((e) => AddressGetModel.fromJson(e))

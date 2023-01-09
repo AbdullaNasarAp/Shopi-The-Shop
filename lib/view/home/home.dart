@@ -24,10 +24,7 @@ class HomeScreen extends StatelessWidget {
         toolbarHeight: 70,
         elevation: 0,
         backgroundColor: kWhite,
-        title: HomeAppBar(),
-        // actions: [
-
-        // ],
+        title: const HomeAppBar(),
       ),
       drawer: const MainDrawer(),
       body: SingleChildScrollView(

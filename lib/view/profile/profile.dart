@@ -42,10 +42,12 @@ class ProfileScreen extends StatelessWidget {
               ),
               ksizedBox10,
               DrawerTile(
-                string: "Add Address",
+                string: "Address",
                 iconData: FontAwesomeIcons.solidAddressBook,
                 ontaptap: () {
-                  Navigator.of(context).pushNamed(AddressScreen.routeName);
+                  Navigator.of(context).pushNamed(
+                    AddressScreen.routeName,
+                  );
                 },
               )
             ],

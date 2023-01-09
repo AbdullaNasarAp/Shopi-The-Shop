@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopi/controller/provider/cart/cartpro.dart';
@@ -16,11 +14,6 @@ class CartCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final cartScreenProvider =
-    //     Provider.of<CartProvider>(context, listen: false);
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   cartScreenProvider.getCartItems();
-    // });
     return Consumer<CartProvider>(
       builder: (context, value, child) {
         return Container(

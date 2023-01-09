@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
-import 'package:shopi/constant/static_cosnt.dart';
 import 'package:shopi/controller/provider/address/address.dart';
 import 'package:shopi/controller/provider/auth/otp.dart';
 import 'package:shopi/controller/provider/auth/signin.dart';
@@ -87,7 +85,7 @@ class Shopi extends StatelessWidget {
           WishList.wRishlist: (context) => const WishList(),
           Categorys.catRoute: (context) => const Categorys(),
           ProfileScreen.routeName: (context) => const ProfileScreen(),
-          AddressScreen.routeName: (context) => const AddressScreen()
+          AddressScreen.routeName: (context) => const AddressScreen(),
         },
       ),
     );

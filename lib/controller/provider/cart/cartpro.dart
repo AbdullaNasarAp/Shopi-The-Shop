@@ -147,24 +147,6 @@ class CartProvider with ChangeNotifier {
       null;
     }
   }
-
-  // void toAddressScreen(
-  //   BuildContext context,
-  //   OrderSummaryScreenEnum orderScreenCheck,
-  //   String? cartId,
-  //   String? productId,
-  // ) {
-  //   final args = AddressScreenArguementModel(
-  //     screenCheck: orderScreenCheck,
-  //     cartId: cartId,
-  //     productId: productId,
-  //     visibility: true,
-  //   );
-  //   Navigator.of(context).pushNamed(
-  //     RouteNames.addressScreen,
-  //     arguments: args,
-  //   );
-  // }
 }
 
 enum OrderSummaryScreenEnum {

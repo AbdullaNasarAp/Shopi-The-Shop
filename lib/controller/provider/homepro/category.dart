@@ -34,6 +34,10 @@ class CategoryProvider with ChangeNotifier {
     });
   }
 
+  CategoryModel findById(String id) {
+    return categoryList.firstWhere((prod) => prod.id == id);
+  }
+
   // void getProductByCategiory(String categoryID) async {
   //   isLoading = true;
   //   notifyListeners();
